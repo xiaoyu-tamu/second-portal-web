@@ -7,10 +7,11 @@ import { HeaderComponent } from './layout/header/header.component';
 import { AwesomeComponent } from './awesome/awesome.component';
 import { SiderComponent } from './layout/sider/sider.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, AwesomeComponent, SiderComponent],
-  imports: [BrowserModule, HttpClientModule, BrowserAnimationsModule],
+  imports: [BrowserModule, HttpClientModule, BrowserAnimationsModule, MaterialModule],
   providers: [],
   bootstrap: [AppComponent],
 })
