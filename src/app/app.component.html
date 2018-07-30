@@ -1,3 +1,41 @@
-<h1 class="mat-body-2">{{title}}</h1>
-
-<button mat-raised-button>Angular Material is Working</button>
+<nz-layout>
+  <nz-sider
+    nzCollapsible
+    nzBreakpoint="lg"
+    [nzWidth]="width"
+    [nzReverseArrow]="isReverseArrow"
+    [(nzCollapsed)]="isCollapsed"
+  >
+    <div class="logo "></div>
+    <ul
+      nz-menu
+      nzTheme="dark"
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+    >
+      <li
+        nz-menu-item
+        [nzSelected]="link.isActive"
+        *ngFor="let route of siderRoutes"
+      >
+        <a
+          routerLinkActive
+          [routerLink]="route.href"
+          [routerLinkActiveOptions]="{exact:true}"
+          #link="routerLinkActive"
+        >
+          <i class="anticon {{route.icon}}"></i>
+          <span>{{route.label}}</span>
+        </a>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout class="main">
+    <nz-header></nz-header>
+    <nz-content>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

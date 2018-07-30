@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-const api = 'http://localhost:3000/api';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +8,15 @@ const api = 'http://localhost:3000/api';
   styleUrls: ['./app.component.styl'],
 })
 export class AppComponent {
-  constructor(http: HttpClient) {
-    http.get<{ app_name: string }>(api).subscribe((res) => {
-      console.log(res);
-      this.title = res.app_name;
-    });
-  }
-  title = 'app';
+  constructor(private readonly route: ActivatedRoute) {}
+
+  isCollapsed = false;
+  isReverseArrow = false;
+  width = 250;
+
+  siderRoutes = [
+    { label: 'dashboard', href: '/', icon: 'anticon-file' },
+    { label: 'awesomes', href: '/awesomes', icon: 'anticon-file' },
+    { label: 'bookmarks', href: '/bookmarks', icon: 'anticon-file' },
+  ];
 }
